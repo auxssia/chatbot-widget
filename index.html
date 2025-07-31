@@ -17,7 +17,7 @@
 
     #chat-container {
       width: 380px;
-      height: 560px;
+      height: 620px; /* Increased height */
       border-radius: 24px;
       display: flex;
       flex-direction: column;
@@ -35,6 +35,8 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
     }
 
     #chat-header::before {
@@ -54,6 +56,8 @@
       background-color: white;
       gap: 8px;
       border-top: 1px solid #eee;
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
     }
 
     #chat-input {
@@ -68,7 +72,7 @@
       background-color: #7c3aed;
       color: white;
       border: none;
-      padding: 10px 18px;
+      padding: 10px 16px;
       border-radius: 20px;
       cursor: pointer;
       font-weight: bold;
@@ -90,7 +94,7 @@
 <body>
   <div id="chat-container">
     <div id="chat-header">AI Assistant</div>
-    <div id="chat-messages" id="chat-log"></div>
+    <div id="chat-messages"></div>
     <div id="chat-input-area">
       <input type="text" id="chat-input" placeholder="Type your message..." />
       <button id="send-button">Send</button>
@@ -117,7 +121,7 @@
       input.value = "";
 
       try {
-        const res = await fetch("https://chatbot-backend-z8e4.onrender.com", {
+        const res = await fetch("https://chatbot-backend-z8e4.onrender.com/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ message: text })
